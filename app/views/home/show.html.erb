@@ -1,4 +1,4 @@
-<p class="h1 text-center">Potin n° <%= @id%></p>
+<p class="h1 text-center">Potin n° <%= params[:id]%></p>
 <br>
 <p class="h2 text-center">Titre : <%= @gossip.find(params[:id]).title%></p>
 <br>
@@ -7,5 +7,5 @@
 <p class="text-center">Auteur : <%= @user.find(@gossip.find(params[:id]).user_id).first_name%>
   <%= @user.find(@gossip.find(params[:id]).user_id).last_name%></p>
 <div class="text-center">
-  <a href="#" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Plus d'informations sur l'auteur</a>
+  <a href="<%= author_id_path(@findgossip.user_id)%>" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Plus d'informations sur l'auteur</a>
 </div>

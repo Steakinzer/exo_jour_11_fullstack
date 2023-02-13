@@ -1,4 +1,27 @@
-<h1>Home#index</h1>
-<p>PAGE D'ACCUEIL</p>
-<p>Bonjour <%= @first_name %> </p>
+<p class="h1 text-center">Page d'accueil</p>
+<p class=" h3 text-center">Voici la liste des potins actuels</p>
+<!-- <% @gossip.each do |i|%>
+<%= i.title%>
+<%= @user.find(i.user_id).first_name%>
+<br>
+<% end%> -->
+<% @gossip.each_slice(3) do |group|%>
+  <div class="container">
+    <div class="row">
+      <% group.each do |i|%>
+        <div class="col">
+          <div class="card">
+            <h5 class="card-header">Potin n° <%= i.id%></h5>
+            <div class="card-body">
+              <h5 class="card-title"><%= i.title%></h5>
+              <p class="card-text">Écrit par : <%= @user.find(i.user_id).first_name%></p>
+              <a href="<%= potin_id_path(i)%>" class="btn btn-primary">Voir le potin</a>
+            </div>
+          </div>
+        </div>
+      <% end%>
+    </div>
+  </div>
+  <br>
+<% end%>
 

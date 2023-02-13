@@ -6,11 +6,15 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 require 'faker'
+
+
 User.destroy_all
 City.destroy_all
 Flopssip.destroy_all
 Tag.destroy_all
 JoinTableTagFlopssip.destroy_all
+ActiveRecord::Base.connection.reset_pk_sequence!('flopssips')
+ActiveRecord::Base.connection.reset_pk_sequence!('users')
 
 ville = []
 10.times do 

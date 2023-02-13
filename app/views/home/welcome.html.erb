@@ -16,7 +16,7 @@
             <div class="card-body">
               <h5 class="card-title"><%= i.title%></h5>
               <p class="card-text">Écrit par : <%= @user.find(i.user_id).first_name%></p>
-              <a href="#" class="btn btn-primary">Voir le potin</a>
+              <a href="<%= potin_id_path(i)%>" class="btn btn-primary">Voir le potin</a>
             </div>
           </div>
         </div>
