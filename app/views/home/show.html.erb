@@ -1,0 +1,11 @@
+<p class="h1 text-center">Potin n° <%= @id%></p>
+<br>
+<p class="h2 text-center">Titre : <%= @gossip.find(params[:id]).title%></p>
+<br>
+<p class="text-center"><%= @gossip.find(params[:id]).content%></p>
+<br>
+<p class="text-center">Auteur : <%= @user.find(@gossip.find(params[:id]).user_id).first_name%>
+  <%= @user.find(@gossip.find(params[:id]).user_id).last_name%></p>
+<div class="text-center">
+  <a href="#" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Plus d'informations sur l'auteur</a>
+</div>
