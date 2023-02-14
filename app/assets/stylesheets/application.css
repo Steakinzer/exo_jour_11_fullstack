@@ -13,3 +13,12 @@
  *= require_tree .
  *= require_self
  */
+ .poulou {
+  opacity: 0.5;
+  
+ }
+
+ .poulou:hover {
+  opacity: 1;
+  border-color: red, solid, 1px;
+ }
