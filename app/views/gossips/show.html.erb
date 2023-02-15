@@ -15,3 +15,9 @@
   <a href="<%= edit_gossip_path(@findgossip.id)%>" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Editer le potin</a>
 </div>
 
+<br>
+<div class="container d-flex justify-content-center" >
+<%= button_to "Supprimer", gossip_path(@findgossip.id), method: :delete, data: { confirm: "Are you sure?" } %>
+</div>
+
+

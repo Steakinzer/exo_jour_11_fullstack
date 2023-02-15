@@ -60,6 +60,9 @@ class GossipsController < ApplicationController
   end
 
   def destroy
+    @caca = Flopssip.find(params[:id])
+    @caca.destroy
+    redirect_to '/'
     # Méthode qui récupère le potin concerné et le détruit en base
     # Une fois la suppression faite, on redirige généralement vers la méthode index (pour afficher la liste à jour)
   end
