@@ -9,3 +9,9 @@
 <div class="text-center">
   <a href="<%= author_id_path(@findgossip.user_id)%>" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Plus d'informations sur l'auteur</a>
 </div>
+<p class= "text-center" > Ville de l'auteur : <%= @city.find(@user.find(@gossip.find(params[:id]).user_id).city_id).name%> </p>
+
+<div class="text-center">
+  <a href="<%= edit_gossip_path(@findgossip.id)%>" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Editer le potin</a>
+</div>
+

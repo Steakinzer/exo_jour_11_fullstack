@@ -1,10 +1,6 @@
-<p class="h1 text-center">Page d'accueil</p>
-<p class=" h3 text-center">Voici la liste des potins actuels</p>
-<!-- <% @gossip.each do |i|%>
-<%= i.title%>
-<%= @user.find(i.user_id).first_name%>
-<br>
-<% end%> -->
+<p class="h1 text-center">Page des villes</p>
+<p class="text-center"><%= @city.name%></p>
+
 <% @gossip.each_slice(3) do |group|%>
   <div class="container">
     <div class="row">
@@ -24,6 +20,3 @@
   </div>
   <br>
 <% end%>
-<div class="d-grid gap-2 fixed-bottom" >
-<a class="poulou btn btn-warning " href="<%=new_gossip_path%>" role="button">Ajouter son potin</a>
-</div>

@@ -1,7 +1,7 @@
 class HomeController < ApplicationController
   def index
   @first_name = params[:first_name]
-  @gossip = Flopssip.all
+  @gossip = Flopssip.all.sort_by(&:id)
   @user = User.all
 
   end

@@ -1,0 +1,41 @@
+<p class="h1 text-center">Potin n° <%= params[:id]%></p>
+<br>
+<p class="h2 text-center">Titre : <%= @gossip.find(params[:id]).title%></p>
+<br>
+<p class="text-center"><%= @gossip.find(params[:id]).content%></p>
+<br>
+<p class="text-center">Auteur : <%= @user.find(@gossip.find(params[:id]).user_id).first_name%>
+  <%= @user.find(@gossip.find(params[:id]).user_id).last_name%></p>
+<p class= "text-center" > Ville de l'auteur : <%= @city.find(@user.find(@gossip.find(params[:id]).user_id).city_id).name%> </p>
+<br> <br>
+<p class="h1 text-center" >Modifier le potin</p>
+
+<div class="container w-50 d-flex justify-content-center" >
+<%= form_tag url_for(action: 'update'), method: "put" do %>
+<%= label_tag 'Titre' %>
+<%= text_field_tag 'title' %>
+<br /> <br />
+
+<%= label_tag 'Contenu' %>
+<%= text_area_tag 'body' %>
+<br /> <br />
+<%= submit_tag "Créer un potin" %>
+<% end %>
+<br /> <br />
+</div>
+<br /> <br />
+
+
+<% if @f.errors.any? %>
+
+  <ul>
+    <% @f.errors.full_messages.each do |message| %>
+    <div class="container w-25" >
+      <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <strong>Erreur ! </strong> <%= message %>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+  </div>
+    <% end %>
+  </ul>
+<% end %>

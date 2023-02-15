@@ -15,6 +15,7 @@ Tag.destroy_all
 JoinTableTagFlopssip.destroy_all
 ActiveRecord::Base.connection.reset_pk_sequence!('flopssips')
 ActiveRecord::Base.connection.reset_pk_sequence!('users')
+ActiveRecord::Base.connection.reset_pk_sequence!('cities')
 
 ville = []
 10.times do 
@@ -28,7 +29,7 @@ end
 
 gossip = []
 20.times do |j|
-  gossip << Flopssip.create(title: Faker::Book.title, content: Faker::Movies::Ghostbusters.unique.quote, user: utilisateur[rand(0..10)])
+  gossip << Flopssip.create(title: Faker::Lorem.characters(number: 10, min_alpha: 4), content: Faker::Movies::Ghostbusters.unique.quote, user: utilisateur[rand(0..10)])
 end
 
 tag = []
