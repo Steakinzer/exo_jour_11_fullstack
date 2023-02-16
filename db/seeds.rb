@@ -12,10 +12,12 @@ User.destroy_all
 City.destroy_all
 Flopssip.destroy_all
 Tag.destroy_all
+Comment.destroy_all
 JoinTableTagFlopssip.destroy_all
 ActiveRecord::Base.connection.reset_pk_sequence!('flopssips')
 ActiveRecord::Base.connection.reset_pk_sequence!('users')
 ActiveRecord::Base.connection.reset_pk_sequence!('cities')
+ActiveRecord::Base.connection.reset_pk_sequence!('comments')
 
 ville = []
 10.times do 
@@ -24,7 +26,7 @@ end
 
 utilisateur = []
 10.times do |i|
-  utilisateur << User.create(first_name: Faker::Name.unique.first_name,last_name: Faker::Name.unique.last_name, description: Faker::Lorem.sentence(word_count: 4),email: Faker::Internet.free_email, age: rand(17..80), city: ville[rand(1..10)])
+  utilisateur << User.create(first_name: Faker::Name.unique.first_name,last_name: Faker::Name.unique.last_name, description: Faker::Lorem.sentence(word_count: 4),email: Faker::Internet.free_email, age: rand(17..80), city: ville[rand(1..10)], password: "test")
 end
 
 gossip = []
@@ -41,11 +43,10 @@ join = []
 20.times do
   join << JoinTableTagFlopssip.create(tag: tag[rand(1..20)], flopssip: gossip[(rand(1..10))])
 end
-
-
-
-msg = PrivateMessage.create(content: "ouioui", sender: utilisateur[5], recipient: utilisateur[6])
-msg = PrivateMessage.create(content: "Msg 22222", sender: utilisateur[1], recipient: utilisateur[2])
+comment = []
+20.times do
+  comment << Comment.create(user: utilisateur[rand(0..10)], flopssip: gossip[(rand(1..10))], content: Faker::Lorem.characters(number: 10, min_alpha: 4))
+end
 
 
 

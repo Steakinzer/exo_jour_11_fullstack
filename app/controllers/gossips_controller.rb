@@ -9,6 +9,7 @@ class GossipsController < ApplicationController
     @city = City.all
     @id = params[:id]
     @findgossip = Flopssip.find(params[:id])
+    @comment = Comment.where(flopssip_id: params[:id])
   end
 
   def new
@@ -17,13 +18,11 @@ class GossipsController < ApplicationController
 
   def create
     @user_id = 10
-    puts params
     @f = Flopssip.new(title: params[:title], content: params[:body], user_id: @user_id)
     if @f.save
       redirect_to '/'
     else
       @f.errors.full_messages
-      puts "$"*60
       render :new
     end
     

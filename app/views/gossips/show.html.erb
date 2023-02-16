@@ -19,5 +19,15 @@
 <div class="container d-flex justify-content-center" >
 <%= button_to "Supprimer", gossip_path(@findgossip.id), method: :delete, data: { confirm: "Are you sure?" } %>
 </div>
+<br>
+<ul class="list-group text-center" >
+<% @comment.each do |i|%>
+<li class="list-group-item"><%=@user.find(i.user_id).first_name%> | : <%=i.content%> <button type="button" class="btn btn-warning">Supprimer</button></li>
+<% end %>
+</ul>
+<br>
+<div class="text-center">
+  <a href="<%= new_comment_path(@findgossip.id)%>" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Ajouter un commentaire</a>
+</div>
 
 

@@ -1,0 +1,26 @@
+<p>Creer votre compte</p>
+
+<div class="container w-50 d-flex justify-content-center" >
+  <%= form_tag url_for(action: 'create'), method: "post" do %>
+  <%= label_tag 'Prénom' %>
+  <%= text_field_tag 'first_name' %>
+  <br /> <br />
+  <%= label_tag 'Nom' %>
+  <%= text_field_tag 'last_name' %>
+  <br /> <br />
+  <%= label_tag 'Description' %>
+  <%= text_field_tag 'description' %>
+  <br /> <br />
+  <%= label_tag 'Email' %>
+  <%= text_field_tag 'email' %>
+  <br /> <br />
+  <%= label_tag 'Age' %>
+  <%= text_field_tag 'age' %>
+  <br /> <br />
+  
+  <%= label_tag 'Mot de passe' %>
+  <%= text_area_tag 'password_digest' %>
+  <br /> <br />
+  <%= submit_tag "Créer utilisateur" %>
+  <% end %>
+  <br /> <br />

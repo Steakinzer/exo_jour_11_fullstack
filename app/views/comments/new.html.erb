@@ -1,0 +1,11 @@
+
+<div class="container w-50 d-flex justify-content-center" >
+  <%= form_tag url_for(action: 'create'), method: "post" do %>
+  <%= label_tag 'Contenu' %>
+  <%= text_area_tag 'content' %>
+  <br /> <br />
+  <%= submit_tag "Ajouter un commentaire" %>
+  <% end %>
+  <br /> <br />
+</div>
+  <br /> <br />

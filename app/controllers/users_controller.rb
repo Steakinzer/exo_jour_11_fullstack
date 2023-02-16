@@ -12,6 +12,14 @@ class UsersController < ApplicationController
   end
 
   def create
+
+    @user = User.new(first_name: params[:first_name], last_name: params[:last_name], description: params[:description], email: params[:email], age: params[:age], password: params[:password_digest])
+    if @user.save
+      redirect_to '/'
+    else
+      puts 'errrrrrrrrrrrrrrrrrrrrrrror'
+      render :new
+    end
     
     # Méthode qui créé un potin à partir du contenu du formulaire de new.html.erb, soumis par l'utilisateur
     # pour info, le contenu de ce formulaire sera accessible dans le hash params (ton meilleur pote)

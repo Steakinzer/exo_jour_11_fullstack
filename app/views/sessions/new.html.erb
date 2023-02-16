@@ -1,0 +1,14 @@
+<p>Page de connection</p>
+
+<div class="container w-50 d-flex justify-content-center" >
+  <%= form_tag url_for(action: 'create'), method: "post" do %>
+  <%= label_tag 'Email' %>
+  <%= text_field_tag 'email' %>
+  <br /> <br />
+  
+  <%= label_tag 'Mot de passe' %>
+  <%= text_area_tag 'password_digest' %>
+  <br /> <br />
+  <%= submit_tag "Créer utilisateur" %>
+  <% end %>
+  <br /> <br />
