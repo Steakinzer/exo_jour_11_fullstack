@@ -13,10 +13,7 @@ class CommentsController < ApplicationController
   end
 
   def create
-    @user_id = 10
-    puts "ù"*100
-    puts params
-    @f = Comment.new(flopssip_id: params[:id], content: params[:content], user_id: @user_id)
+    @f = Comment.new(flopssip_id: params[:id], content: params[:content], user_id: session[:user_id])
     if @f.save
       redirect_to gossip_path(params[:id])
     else

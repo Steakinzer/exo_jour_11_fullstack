@@ -9,11 +9,13 @@ class UsersController < ApplicationController
   end
 
   def new
+    @city = City.all
+    @user = User.new
   end
 
   def create
 
-    @user = User.new(first_name: params[:first_name], last_name: params[:last_name], description: params[:description], email: params[:email], age: params[:age], password: params[:password_digest])
+    @user = User.new(user_params)
     if @user.save
       redirect_to '/'
     else
@@ -39,6 +41,11 @@ class UsersController < ApplicationController
   def destroy
     # Méthode qui récupère le potin concerné et le détruit en base
     # Une fois la suppression faite, on redirige généralement vers la méthode index (pour afficher la liste à jour)
+  end
+
+  private
+  def user_params
+    params.require(:user).permit(:first_name,:last_name,:password,:email,:description,:age, :city_id)
   end
 
 end

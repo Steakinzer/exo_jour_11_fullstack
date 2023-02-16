@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  include UsersHelper
   belongs_to :city, optional: true
   has_many :flopssips
   has_many :comments

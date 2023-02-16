@@ -1,4 +1,6 @@
 class GossipsController < ApplicationController
+before_action :log
+
   def index
     # Méthode qui récupère tous les potins et les envoie à la view index (index.html.erb) pour affichage
   end
@@ -17,8 +19,7 @@ class GossipsController < ApplicationController
   end
 
   def create
-    @user_id = 10
-    @f = Flopssip.new(title: params[:title], content: params[:body], user_id: @user_id)
+    @f = Flopssip.new(title: params[:title], content: params[:body], user_id: session[:user_id])
     if @f.save
       redirect_to '/'
     else
@@ -42,16 +43,17 @@ class GossipsController < ApplicationController
   end
 
   def update
-    @user_id = 10
-    puts params
     @f = Flopssip.find(params[:id])
-    
-    if @f.update(title: params[:title], content: params[:body], user_id: @user_id)
-      redirect_to '/'
+    if my_potin?
+      if @f.update(title: params[:title], content: params[:body], user_id: session[:user_id])
+        redirect_to '/'
+      else
+        @f.errors.full_messages
+        puts "$"*60
+        render :new
+      end
     else
-      @f.errors.full_messages
-      puts "$"*60
-      render :new
+      puts "tu peux pas edit c'est pas a toi"
     end
     # Méthode qui met à jour le potin à partir du contenu du formulaire de edit.html.erb, soumis par l'utilisateur
     # pour info, le contenu de ce formulaire sera accessible dans le hash params
@@ -59,10 +61,27 @@ class GossipsController < ApplicationController
   end
 
   def destroy
-    @caca = Flopssip.find(params[:id])
-    @caca.destroy
+    @flop = Flopssip.find(params[:id])
+    if my_potin?
+    @flop.destroy
+    else 
+      puts "c'est pas ton potin"
+    end
     redirect_to '/'
     # Méthode qui récupère le potin concerné et le détruit en base
     # Une fois la suppression faite, on redirige généralement vers la méthode index (pour afficher la liste à jour)
   end
+
+  private
+
+  def log
+    unless logged_in?
+      puts "$"*100
+      puts "Il faut vous connecter"
+      redirect_to new_session_path
+    end
+  end
+
+ 
+
 end
